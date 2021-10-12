@@ -34,11 +34,9 @@ const calculateExercises = (hours: Array<number>, target: number) : CalculationV
     const targetRating = averageHours < targetHours - 1 ? 1 : averageHours > targetHours + 1 ? 3 : 2
 
     // Message for rating
-    const ratingDescription = 
-        targetRating === 1 ? 'pretty bad' 
-        : 
-        targetRating === 2 ? 'not too great' 
-        : 'well done'
+    const ratingDescription = targetRating === 1 ? 'pretty bad' 
+    : targetRating === 2 ? 'not too great' 
+    : 'well done'
 
     return {
         days,
