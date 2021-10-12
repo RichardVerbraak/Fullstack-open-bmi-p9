@@ -1,9 +1,8 @@
-type Message = String
+const height: number = Number(process.argv[2])
+const weight: number = Number(process.argv[3])
 
 const calculateBmi = (height: number, weight: number) : string => {
     const BMI = weight / Math.pow(height / 100, 2)
-
-    console.log(typeof BMI)
 
     if(BMI <= 18.4) return 'Underweight'
     if(BMI >= 18.5 && BMI <= 24.9) return 'Normal'
@@ -11,4 +10,5 @@ const calculateBmi = (height: number, weight: number) : string => {
     if(BMI >= 30.0) return 'Obese'
 }
 
-console.log(calculateBmi(180, 300))
+console.log(calculateBmi(height, weight))
+
