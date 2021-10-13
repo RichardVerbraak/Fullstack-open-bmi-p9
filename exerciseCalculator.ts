@@ -32,10 +32,16 @@ const validateArgs = (args: Array<string>) : CalculationArgs => {
     // Check if everything is a number
     const allNumbers = hours.every((hour) => {
         return !isNaN(hour)
-    })
+    })    
 
     // Error if not all numbers
-    if(!allNumbers) throw new Error('Please input only numbers')    
+    if(!allNumbers) throw new Error('Please input only numbers') 
+    
+    const normalHours = hours.every((hour) => {
+        return hour <= 24
+    })
+
+    if(!normalHours) throw new Error('A day only has 24 hours!')
 
     return {
         target,
