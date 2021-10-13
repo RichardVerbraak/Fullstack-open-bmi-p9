@@ -15,6 +15,8 @@ interface CalculationArgs {
 }
 
 const validateArgs = (args: Array<string>) : CalculationArgs => {
+    if(args.length < 4) throw new Error('Too few arguments, please pass in more than 1')
+
     // Remove first 3 elements returned from process.argv -- first two being related to the directory and the last being the target hours
     const slicedArray = args.splice(0, 3)
     const target = Number(slicedArray[2])
