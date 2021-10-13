@@ -41,7 +41,7 @@ const validateArgs = (args: Array<string>) : CalculationArgs => {
         return hour <= 24
     })
 
-    if(!normalHours) throw new Error('A day only has 24 hours!')
+    if(!normalHours || target > 24) throw new Error('A day only has 24 hours!')
 
     return {
         target,
