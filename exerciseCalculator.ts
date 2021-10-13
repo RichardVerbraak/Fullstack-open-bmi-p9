@@ -9,6 +9,41 @@ interface CalculationValues {
     ratingDescription: string
 }
 
+interface CalculationArgs {
+    target: number,
+    hours: Array<number>
+}
+
+const validateArgs = (args: Array<string>) : CalculationArgs => {
+    // Remove first 3 elements returned from process.argv
+    const slicedArray = args.splice(0, 3)
+    const target = Number(slicedArray[2])
+
+    // Error if target is not a number
+    if(isNaN(target)) throw new Error('Please input a number')
+        
+    // Map strings to numbers
+    const hours = args.map((hour) => {
+        return Number(hour)
+    })
+
+    // Check if everything is a number
+    const allNumbers = hours.every((hour) => {
+        return !isNaN(hour)
+    })
+
+    // Error if not all numbers
+    if(!allNumbers) throw new Error('Please input only numbers')    
+
+    return {
+        target,
+        hours
+    }
+}
+
+
+const {target, hours} = validateArgs(process.argv)
+
 const calculateExercises = (hours: Array<number>, target: number) : CalculationValues => {
     // Amount of days
     const days = hours.length
@@ -49,6 +84,4 @@ const calculateExercises = (hours: Array<number>, target: number) : CalculationV
     }
 }
 
-const week1 = [3, 0, 2, 4.5, 0, 3, 1]
-
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2))
+console.log(calculateExercises(hours, target))
