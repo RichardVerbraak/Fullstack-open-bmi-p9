@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "calcBmi": "ts-node calculateBmi.ts",
-    "calcExercises": "ts-node exerciseCalculator.ts"
+    "calcExercises": "ts-node exerciseCalculator.ts",
+    "start": "ts-node index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,8 @@
     "ts-node": "^10.3.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

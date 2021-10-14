@@ -1,7 +1,14 @@
 // This is used to define how the TS compiler should interpret the code
 // noImplicitAny means every variable has to have a type (so explicitly setting types basically)
 {
-    "compilerOptions": {
-      "noImplicitAny": true,
-    }
+  "compilerOptions": {
+    "target": "ES2020",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
+}
