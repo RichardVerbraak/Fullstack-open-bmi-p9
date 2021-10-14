@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "calcBmi": "ts-node calculateBmi.ts",
     "calcExercises": "ts-node exerciseCalculator.ts",
-    "start": "ts-node-dev index.ts"
+    "start": "ts-node index.ts",
+    "dev": "ts-node-dev index.ts"
   },
   "keywords": [],
   "author": "",
