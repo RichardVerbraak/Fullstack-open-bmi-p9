@@ -24,19 +24,17 @@
 // console.log(calculateBmi(value1, value2))
 
 const calculateBmi = (height: number, weight: number) : string => {
-    const BMI = weight / Math.pow(height / 100, 2)
+    const BMI = weight / Math.pow(height / 100, 2);
 
-    let message : string = ''
+    let message = '';    
 
-    
+    if(BMI <= 18.4) message = 'Underweight';
+    if(BMI >= 18.5 && BMI <= 24.9)  message = 'Normal';
+    if(BMI >= 25.0 && BMI <= 29.9) message = 'Overweight';
+    if(BMI >= 30.0)  message = 'Obese';
 
-    if(BMI <= 18.4) message = 'Underweight'
-    if(BMI >= 18.5 && BMI <= 24.9)  message = 'Normal'
-    if(BMI >= 25.0 && BMI <= 29.9) message = 'Overweight'
-    if(BMI >= 30.0)  message = 'Obese'
+    return message;
+};
 
-    return message
-}
-
-export { calculateBmi }
+export { calculateBmi };
 
