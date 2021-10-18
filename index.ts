@@ -36,7 +36,7 @@ app.get('/bmi', (req, res) => {
     });
 });
 
-
+// no-unsafe-member-access and no-unsafe-assignment are ignored in this exercise
 app.post('/exercises', (req, res) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const daily_exercises : Array<number> = req.body.daily_exercises;
