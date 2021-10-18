@@ -1,65 +1,69 @@
+//// Commented out everything that validates CLI arguments
+
 // Model of object that's being returned
-interface CalculationValues {
-    days: number,
-    trainingDays: number,
-    targetHours: number,
-    averageHours: number,
-    success: boolean,
-    targetRating: number,
-    ratingDescription: string
-}
+// interface CalculationValues {
+//     days: number,
+//     trainingDays: number,
+//     targetHours: number,
+//     averageHours: number,
+//     success: boolean,
+//     targetRating: number,
+//     ratingDescription: string
+// }
 
-interface CalculationArgs {
-    target: number,
-    hours: Array<number>
-}
+// interface CalculationArgs {
+//     target: number,
+//     hours: Array<number>
+// }
 
-const validateArgs = (args: Array<string>) : CalculationArgs => {
-    if(args.length < 4) throw new Error('Too few arguments, please pass in more than 1');
+// const validateArgs = (args: Array<string>) : CalculationArgs => {
+//     if(args.length < 4) throw new Error('Too few arguments, please pass in more than 1');
 
-    // Remove first 3 elements returned from process.argv -- first two being related to the directory and the last being the target hours
-    const slicedArray = args.splice(0, 3);
-    const target = Number(slicedArray[2]);
+//     // Remove first 3 elements returned from process.argv -- first two being related to the directory and the last being the target hours
+//     const slicedArray = args.splice(0, 3);
+//     const target = Number(slicedArray[2]);
 
-    // Error if target is not a number
-    if(isNaN(target)) throw new Error('Please input a number');
+//     // Error if target is not a number
+//     if(isNaN(target)) throw new Error('Please input a number');
         
-    // Map strings to numbers
-    const hours = args.map((hour) => {
-        return Number(hour);
-    });
+//     // Map strings to numbers
+//     const hours = args.map((hour) => {
+//         return Number(hour);
+//     });
 
-    // Check if everything is a number
-    const allNumbers = hours.every((hour) => {
-        return !isNaN(hour);
-    });
+//     // Check if everything is a number
+//     const allNumbers = hours.every((hour) => {
+//         return !isNaN(hour);
+//     });
 
-    // Error if not all numbers
-    if(!allNumbers) throw new Error('Please input only numbers'); 
+//     // Error if not all numbers
+//     if(!allNumbers) throw new Error('Please input only numbers'); 
     
-    const normalHours = hours.every((hour) => {
-        return hour <= 24;
-    });
+//     const normalHours = hours.every((hour) => {
+//         return hour <= 24;
+//     });
 
-    if(!normalHours || target > 24) throw new Error('A day only has 24 hours!');
+//     if(!normalHours || target > 24) throw new Error('A day only has 24 hours!');
 
-    return {
-        target,
-        hours
-    };
-};
+//     return {
+//         target,
+//         hours
+//     };
+// };
 
 
-const {target, hours} = validateArgs(process.argv);
+// const {target, hours} = validateArgs(process.argv);
 
-const calculateExercises = (hours: Array<number>, target: number) : CalculationValues => {
+const calculateExercises = (hours: Array<number>, target: number) : object => {
     // Amount of days
     const days = hours.length;
     
     // Amount of days trained
-    const trainingDays = hours.reduce((prev, current) => {
-        return current > 0 ? prev + current : 0;
+    const trainingDays = hours.reduce((prev, current) => {        
+        return current > 0 ? prev + 1 : prev + 0;
     }, 0);
+
+    console.log(trainingDays);
 
     // Target for days trained
     const targetHours = target;
@@ -92,4 +96,6 @@ const calculateExercises = (hours: Array<number>, target: number) : CalculationV
     };
 };
 
-console.log(calculateExercises(hours, target));
+console.log(calculateExercises([1, 0, 2, 0, 3, 0, 2.5], 2.5));
+
+export { calculateExercises };
